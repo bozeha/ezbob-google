@@ -93,29 +93,29 @@ const SearchBar = ({ users }) => {
                     </SelectDropdown>
                 }
             </InputCont>
-            <ResultsCont>
-                {currentIndex != null && results && results.length > 0 &&
-                    <>
-                        <p>Number of results {results.length} Time for results: {timeForResults}s</p>
-                        {
-                            results.map((current) => (
-                                <div key={uuidv4()}>
-                                    <a href={current.link}>{current.title}</a>
-                                    <p>{current.desc}</p>
-                                    {current?.sub.map((subCurrent) => (
-                                        <OneResult key={uuidv4()}>
+            {currentIndex != null && results && results.length > 0 &&
+                <ResultsCont>
 
-                                            <a href={subCurrent.link}>{subCurrent.title}</a>
-                                            <p>{subCurrent.desc}</p>
-                                        </OneResult >
+                    <p>Number of results {results.length} Time for results: {timeForResults}s</p>
+                    {
+                        results.map((current) => (
+                            <div key={uuidv4()}>
+                                <a href={current.link}>{current.title}</a>
+                                <p>{current.desc}</p>
+                                {current?.sub.map((subCurrent) => (
+                                    <OneResult key={uuidv4()}>
 
-                                    ))}
-                                </div>
-                            ))
-                        }
-                    </>
-                }
-            </ResultsCont>
+                                        <a href={subCurrent.link}>{subCurrent.title}</a>
+                                        <p>{subCurrent.desc}</p>
+                                    </OneResult >
+
+                                ))}
+                            </div>
+                        ))
+                    }
+
+                </ResultsCont>
+            }
         </>
     )
 }
